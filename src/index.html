@@ -3,11 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Proyecto con Parcel y jQuery</title>
+    <title>Maestro-Detalle. Servidor. Boostrap</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" 
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <script src="../node_modules/jquery/dist/jquery.js"></script> 
 </head>
 <body>
-    <h1>Hola, mundo con Parcel y jQuery!</h1>
+    <h1>Maestro</h1>
+    <ul id="maestro">
+
+    </ul>
+    <div id="detalle" hidden>
+        <h1>Detalle</h1>
+        <form>
+            <input type="hidden" id="id" name="id">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido">
+        </form>
+    </div>
+
+
+    <div id="principal"> 
+        <button id="listar" class="btn btn-primary">Listar</button>
+        <div id="resListar"></div>
+        <button id="leer"  class="btn btn-success">Leer</button>
+        <div id="resLeer" class="mio"></div>
+        <button id="crear">Crear</button>
+        <div id="resCrear"></div>
+        <button id="actualizar">Actualizar</button>
+        <div id="resActualizar"></div>
+        <button id="borrar">Borrar</button>
+        <div id="resBorrar"></div>
+    </div>
     <script src="./javascript/index.js"></script>
 </body>
 </html>

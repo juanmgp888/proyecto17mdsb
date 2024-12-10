@@ -1,8 +1,11 @@
-# jqueryBase
-Punto de partida proyecto nodejs - jquery - parcel js
+# Proyecto 17 MDSB 
+# Maestro-Detalle Ajax-Servidor Bootstrap
 
-#Reconstruye dependencias si clonas este repositorio!!
-npm install     
+Para reconstruir dependencias
+    npm install
 
-#Levantar servidor
-npm run server  
+Para levantar el servidor
+    npm run server
+
+Para empaquetar
+    npm run build
