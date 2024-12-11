@@ -1,0 +1,86 @@
+        /* Estilos personalizados para la barra lateral */
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+
+        .sidenav a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            background-color: #575757;
+        }
+        #menu{
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 22px;
+        }
+
+        /* Estilo para la cabecera */
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Estilo para el pie de página */
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Asegurarse de que el contenido no se solape con la barra lateral */
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+
+        /* Evitar que el contenido se solape con el pie */
+        body {
+            padding-bottom: 60px;
+        }
+
+        ul {
+            background-color: azure;
+            list-style-type: none;
+        }
+        li {
+            margin: 7px;
+        }
+        form {
+            background-color: azure;
+        }
+        #respuestasServidor{
+            background-color: rgb(253, 207, 137);
+            margin-top: 10px;
+            width:max-content;
+        }
+        .botones{
+            display:inline-block;
+        }
+        input, li {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: larger;
+        }
+ /*       #accionesDetalle{
+            display:inline-block
+        }
+*/
+ 

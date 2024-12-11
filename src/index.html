@@ -4,39 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maestro-Detalle. Servidor. Boostrap</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" 
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Vincular Bootstrap desde el CDN -->
+    <!-- Versiones modernas de Bootstrap no requieren jquery ... colisionan con jquery !!
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> 
+    
+    <link rel="stylesheet" href="css/miEstilo.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script> 
+
 </head>
 <body>
-    <h1>Maestro</h1>
-    <ul id="maestro">
+    <!-- Cabecera -->
+    <div class="header">
+        <h1>Solicitudes</h1>
+    </div>
+    
+    <!-- Barra lateral -->
+    <div class="sidenav">
+        <h2 id="menu" class="text-white text-center">Menú</h2>
+        <a href="#">Inicio</a>
+        <a href="#">Solicitudes</a>
+        <a href="#">Acerca de</a>
+        <a href="#">Contacto</a>
+    </div>
+    
+    <!-- Contenido Principal -->
+    <div class="content">
+    <div class="container">
+        <h3>Lista de solicitudes</h3>
+        <div class="botones">
+            <button id="listar" class="btn btn-primary" >Listar</button>
+            <!-- <div id="resListar"></div> -->
+            <button id="crear" class="btn btn-secondary">Crear</button>
+            <!-- <div id="resCrear"></div> -->
+         </div>
 
-    </ul>
-    <div id="detalle" hidden>
-        <h1>Detalle</h1>
-        <form>
-            <input type="hidden" id="id" name="id">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre">
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido">
-        </form>
+        <ul id="maestro">
+            
+        </ul>
+        <br>
+        <div id="detalle" hidden> <!-- lo visibilizo desde jquery una vez seleccionado registro/socilitud -->
+            <h3>Detalle de la solicitud</h3>
+            <form>
+                <input type="hidden" id="id" name="id">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido">
+            </form>
+        </div>
+        <br>
+        <div id="accionesDetalle" hidden> 
+        <!-- <button id="leer" class="btn btn-info">Leer</button> -->
+        <!-- <div id="resLeer"></div> -->
+            <button id="actualizar" class="btn btn-warning">Actualizar</button>
+            <button id="borrar" class="btn btn-danger">Borrar</button>
+            <button id="cancelar" class="btn btn-info">Volver</button> <!-- cancelar . Pero no quiero que ponga cancelar tras borrar-->
+        </div>          
+
+        <div id="respuestasServidor">
+            <div id="resActualizar"></div>
+            <div id="resBorrar"></div>
+        </div>
+    </div>
+    </div>
+    
+    <!-- Pie de página -->
+    <div class="footer">
+        <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
     </div>
 
 
-    <div id="principal"> 
-        <button id="listar" class="btn btn-primary">Listar</button>
-        <div id="resListar"></div>
-        <button id="leer"  class="btn btn-success">Leer</button>
-        <div id="resLeer" class="mio"></div>
-        <button id="crear">Crear</button>
-        <div id="resCrear"></div>
-        <button id="actualizar">Actualizar</button>
-        <div id="resActualizar"></div>
-        <button id="borrar">Borrar</button>
-        <div id="resBorrar"></div>
-    </div>
-    <script src="./javascript/index.js"></script>
+
+    <script src="./javascript/index.js"></script>  
+
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+-->
+       <!--
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+-->
+
+    <!-- Vincular los scripts de Bootstrap -->
+
 </body>
 </html>

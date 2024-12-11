@@ -1,28 +1,44 @@
 $(document).ready(function() {
-
+    // Presentar el listado de solicitudes. LISTAR.
     $("#listar").on("click", function() {
         $.get("https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes", function(data) {
-            $("#resListar").text("Ok");
-            $("#resListar").attr("data-midato", data);
+        //  $("#resListar").text("Ok");
+     //   $("#detalle").hide(); // Me aseguro de que esté oculto.
+     //   $("accionesDetalle").hide();
 
-            // TODO pasar la info a sección Maestro.
-            // TODO crear una tabla o una <ul> con los elementos del 'data'
+        $("#maestro").empty();  // Limpiar, por si cancelan y se duplica la visibilización
             console.log(data);
-        })
+
+            data.forEach(function(solicitud) {
+                $("#maestro").append(
+                    $("<li>")
+                        .text(solicitud.nombre + ' ' + solicitud.apellido)
+                        .val(solicitud)
+                        .attr("id", "id" + solicitud.id)
+                );
+            });
         
+        }).fail(function() {
+            alert("Error al cargar las solicitudes.");
+        });
     });
-    // TODO Programar un evento para cuando se haga clic sobre un elemento del maestro devuelva una
-    //      función callback que presente el detalle.
+    
+    // Ver el detalle de una solicitud concreta al seleccionarla. LEER.
+    $(document).on("click", "#maestro li", function(event) {
+        var solicitudId = $(this).attr("id").replace("id", "");
+        // Agregamos nº solicitud a consultar, a la URL. Leer.
+        $.get("https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes/" + solicitudId, function(data) {
+            $("#detalle").show(); // mostrar bloque div de detalle
 
+           // $("#id").val(data.id);
+            $("#nombre").val(data.nombre); // pasar campos del data a sus homólogos html
+            $("#apellido").val(data.apellido);
 
-
-    $("#leer").on("click", function() {
-        $.get("https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes/1", function(data) {
-            $("#resLeer").text("Ok"); 
- 
-            console.log(data);
-        })
-        
+            $("#accionesDetalle").show(); // Los botones pertinentes ahora sí, se muestran. 
+            $("#respuestasServidor").show(); 
+        }).fail(function() {
+            alert("Error al cargar los detalles.");
+        });
     });
 
 
@@ -31,12 +47,12 @@ $(document).ready(function() {
             url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes",
             method: "POST",
             "data": JSON.stringify({
-                id: 0,
+                id: 0,          // Cero indica creación 
                 nombre: "Juan",
                 apellido: "Otro"
             }),
             success: function(data) {
-                $("#resCrear").text("Ok"); 
+                $("#resCrear").text("OK. Creado nueva solicitud."); 
                 console.log(data);
             },
             error: function(data) {
@@ -47,9 +63,6 @@ $(document).ready(function() {
 
 
     $('#actualizar').on('click',function() {
-        $('#principal > button[]')
-
-        $(this).addClass('mio')
         $.ajax({
             url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes/2",
             method: "PUT",
@@ -59,7 +72,7 @@ $(document).ready(function() {
                 apellido: "Otro"
             }),
             success: function(data) {
-                $("#resActualizar").text("Ok"); 
+                $("#resActualizar").text("OK. Actualizada la solicitud."); 
                 console.log(data);
             },
             error: function(data) {
@@ -73,13 +86,25 @@ $(document).ready(function() {
             url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes/1",
             method: "DELETE",
             success: function(data) {
-                $("#resBorrar").text("Ok"); 
+                $("#resBorrar").text("OK. Borrada la solicitud. ¡Ay!"); 
                 console.log(data);
             },
             error: function(data) {
                 console.log(data);
             }
+        
         });
+        // oculto los botones que no proceden tras borrar
+        $("#actualizar").hide(); 
+        $("#borrar").hide();
+        // TODO Vaciar los campos...
+    });
+    $("#cancelar").on("click", function() {
+        $("#detalle").hide();
+        $("#accionesDetalle").hide();
+        $("#respuestasServidor").val("").text("");
+        $("#respuestasServidor").hide();
+        listar();  // Llamo listar para recargar el listado
     });
 });
 
