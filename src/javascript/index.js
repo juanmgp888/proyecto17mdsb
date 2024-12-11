@@ -56,7 +56,7 @@ $(document).ready(function() {
         $("#actualizar").on("click",function(){
             var nombreNuevo = $("#nombre").val();
             var apellidoNuevo = $("#apellido").val();
-            if (nombreNuevo === "" || apellidoNuevo === "") {
+            if (nombreNuevo === "" || apellidoNuevo === "") { // Ni vacíos ni de tipo distinto a cadena
                 alert("Los campos no pueden estar vacíos.");
                 return;
             }
@@ -83,13 +83,17 @@ $(document).ready(function() {
 
 
     $('#actualizar').on('click',function() {
-        $.ajax({
+        
+            var nombreNuevo = $("#nombre").val();
+            var apellidoNuevo = $("#apellido").val();
+
+        $.ajax({                                                                            // nº ??
             url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes/2",
             method: "PUT",
             "data": JSON.stringify({
                 id: 1,
-                nombre: "Juan",
-                apellido: "Otro"
+                nombre: nombreNuevo,
+                apellido: apellidoNuevo
             }),
             success: function(data) {
                 $("#resActualizar").text("OK. Actualizada la solicitud."); 
@@ -106,7 +110,7 @@ $(document).ready(function() {
             url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes/1",
             method: "DELETE",
             success: function(data) {
-                $("#resBorrar").text("OK. Borrada la solicitud. ¡Ay!"); 
+                $("#resBorrar").text("OK. Borrada la solicitud."); 
                 console.log(data);
             },
             error: function(data) {
