@@ -2,9 +2,9 @@ $(document).ready(function() {
     // Presentar el listado de solicitudes. LISTAR.
     $("#listar").on("click", function() {
         $.get("https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes", function(data) {
-        //  $("#resListar").text("Ok");
-     //   $("#detalle").hide(); // Me aseguro de que esté oculto.
-     //   $("accionesDetalle").hide();
+      //   $("#resListar").text("Ok");
+      //   $("#detalle").hide(); // Me aseguro de que esté oculto.
+      //   $("accionesDetalle").hide();
 
         $("#maestro").empty();  // Limpiar, por si cancelan y se duplica la visibilización
             console.log(data);
@@ -35,7 +35,8 @@ $(document).ready(function() {
             $("#apellido").val(data.apellido);
 
             $("#accionesDetalle").show(); // Los botones pertinentes ahora sí, se muestran. 
-            $("#respuestasServidor").show(); 
+            $("#respuestasServidor").show();
+
         }).fail(function() {
             alert("Error al cargar los detalles.");
         });
