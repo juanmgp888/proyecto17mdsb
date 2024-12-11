@@ -69,7 +69,9 @@
         }
         #respuestasServidor{
             background-color: rgb(253, 207, 137);
-            margin-top: 10px;
+            margin-top: 20px;
+            /* padding: 5px; */                      
+            border-radius: 6px; 
             width:max-content;
         }
         .botones{

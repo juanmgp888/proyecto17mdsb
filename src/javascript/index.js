@@ -43,23 +43,42 @@ $(document).ready(function() {
     });
 
 
-    $('#crear').on('click',function() {
-        $.ajax({
-            url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes",
-            method: "POST",
-            "data": JSON.stringify({
-                id: 0,          // Cero indica creación 
-                nombre: "Juan",
-                apellido: "Otro"
-            }),
-            success: function(data) {
-                $("#resCrear").text("OK. Creado nueva solicitud."); 
-                console.log(data);
-            },
-            error: function(data) {
-                console.log(data);
+    $("#crear").on("click",function() {
+        $("#detalle").show();
+        $("#accionesDetalle").show();
+        $("#cancelar").show(); //volver = cancelar
+        $("#borrar").hide()
+        $("#nombre").val("");  // Limpiar campos de nombre y apellido
+        $("#apellido").val(""); 
+
+        $("#actualizar").show();
+
+        $("#actualizar").on("click",function(){
+            var nombreNuevo = $("#nombre").val();
+            var apellidoNuevo = $("#apellido").val();
+            if (nombreNuevo === "" || apellidoNuevo === "") {
+                alert("Los campos no pueden estar vacíos.");
+                return;
             }
-        });
+            $.ajax({
+                url: "https://my-json-server.typicode.com/desarrollo-seguro/proyecto17/solicitudes",
+                method: "POST",
+                "data": JSON.stringify({
+                    id: 0,          // Cero indica creación 
+                    nombre: nombreNuevo,
+                    apellido: apellidoNuevo
+                }),
+                success: function(data) {
+                    $("respuestasServidor").show();
+                    $("#resCrear").text("OK. Creada nueva solicitud."); 
+                    console.log(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+
+        })
     });
 
 
@@ -98,14 +117,17 @@ $(document).ready(function() {
         // oculto los botones que no proceden tras borrar
         $("#actualizar").hide(); 
         $("#borrar").hide();
-        // TODO Vaciar los campos...
+
+        $("#nombre").val("");
+        $("#apellido").val("");
+        $("#maestro li").hide();
     });
     $("#cancelar").on("click", function() {
         $("#detalle").hide();
         $("#accionesDetalle").hide();
         $("#respuestasServidor").val("").text("");
         $("#respuestasServidor").hide();
-        listar();  // Llamo listar para recargar el listado
+        listar();  // Llamo al método listar para recargar el listado
     });
 });
 
